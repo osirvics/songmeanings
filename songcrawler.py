@@ -61,13 +61,6 @@ def getFromSongFacts(search_query):
 	songfact = []
 	chunks = factlist.find_all("li")
 
-	# for chunk in chunks:
-	# 	text = chunk.contents[0]
-	# 	for br in text.find_all("br"):
-	# 		br.replace_with("\n")
-	# 	print(text.text)
-	# 	songfact.append(text.text)
-	# return songfact
 	payload = {}
 	payload["meaning"] = ""
 	for chunk in chunks:
@@ -78,10 +71,7 @@ def getFromSongFacts(search_query):
 		payload["meaning"] += com
 	songfact.append(payload)
 	return songfact
-
-    	
 	
-
 if __name__ == '__main__':
 	#getFromSongFacts("ll")
 	getFromSongsmeanings("FEEL IT STILL PORTUGAL THE MAN")

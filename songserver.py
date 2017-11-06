@@ -12,7 +12,7 @@ def puppiesFunctionId(id):
 @app.route('/api/query', methods = ['GET', 'POST'])
 def findSongMeaning():
   if request.method == 'GET':
-    h = ""
+    return "Don't call this endpoint"
   	
   elif request.method == 'POST':
   	# MAKE A NEW RESTAURANT AND STORE IT IN DATABASE

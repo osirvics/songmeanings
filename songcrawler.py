@@ -42,7 +42,6 @@ def getFromSongsmeanings(search_query):
 		# 	print(index)
 		if len(outputList) == 0:
 			return getFromGenius(search_query)
-		print
 		return outputList
 	elif target_url is None:
 		return getFromGenius(search_query)

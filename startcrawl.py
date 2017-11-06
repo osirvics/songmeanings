@@ -43,8 +43,8 @@ def findSongFact(search_query):
 	return link
 
 def fingGeniusSongUrl(search_query):
-	query_string = search_query.replace(" ", "+")
-	query_string = query_string + " site:genius.com"
+	#query_string = search_query.replace(" ", "+")
+	query_string = search_query + " site:genius.com"
 	print("Query url: " + str(query_string))
 	browser = mechanicalsoup.StatefulBrowser()
 	browser.open("https://duckduckgo.com/")

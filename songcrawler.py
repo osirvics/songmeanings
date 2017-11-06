@@ -41,11 +41,11 @@ def getFromSongsmeanings(search_query):
 		# for index, nu in enumerate(outputList):
 		# 	print(index)
 		if len(outputList) == 0:
-			return getFromSongFacts(search_query)
+			return getFromGenius(search_query)
 		print
 		return outputList
 	elif target_url is None:
-		return getFromSongFacts(search_query)
+		return getFromGenius(search_query)
 
 		
 
@@ -68,10 +68,25 @@ def getFromSongFacts(search_query):
 		for br in text.find_all("br"):
 			br.replace_with("\n")
 		com = text.get_text(strip=True)
-		payload["meaning"] += com
+		payload["meaning"] += " " + com
 	songfact.append(payload)
 	return songfact
+
+def getFromGenius(search_query):
+	target_url = startcrawl.fingGeniusSongUrl(search_query)
+	response = requests.get(target_url)
+	html = response.text
+	soup = bs4.BeautifulSoup(html, "html.parser")
+	content = soup.select(".rich_text_formatting")[0]
+	text = content.get_text()
+	payload = {}
+	payload["meaning"] = text
+	songfact = []
+	songfact.append(payload)
+	return songfact
+	#for conten in content:
+		#print(conten.prettify())
+
 	
 if __name__ == '__main__':
-	#getFromSongFacts("ll")
-	getFromSongsmeanings("FEEL IT STILL PORTUGAL THE MAN")
+	getFromGenius("Havana Camila Cabello")

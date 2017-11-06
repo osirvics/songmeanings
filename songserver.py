@@ -5,9 +5,9 @@ import json
 app = Flask(__name__) 
   
  
-@app.route('/api/meanings')
-def puppiesFunctionId(id):
-  return "This method will act on the puppy with id %s" % id
+@app.route('/')
+def welcome():
+  return "Welcome to this test project"
 
 @app.route('/api/query', methods = ['GET', 'POST'])
 def findSongMeaning():
@@ -15,7 +15,6 @@ def findSongMeaning():
     return "Don't call this endpoint"
   	
   elif request.method == 'POST':
-  	# MAKE A NEW RESTAURANT AND STORE IT IN DATABASE
     query = request.json.get('song_info')
     print("Recieved query: " + str(query))
     meanings = songcrawler.getFromSongsmeanings(query)

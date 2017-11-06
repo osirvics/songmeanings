@@ -6,6 +6,9 @@ import songcrawler
 import startcrawl
 import mechanicalsoup
 
+
+#https://genius.com/search?q=new%20rules%20dua%20lipa
+#https://genius.com/search?q=havana%20camila%20cabello
  
 def findUrl(search_query):
 	query_string = search_query.replace(" ", "+")
@@ -39,8 +42,21 @@ def findSongFact(search_query):
 	print(link)
 	return link
 
-if __name__ == '__main__':
-	link = findUrl("Halo")
+def fingGeniusSongUrl(search_query):
+	query_string = search_query.replace(" ", "+")
+	query_string = query_string + " site:genius.com"
+	print("Query url: " + str(query_string))
+	browser = mechanicalsoup.StatefulBrowser()
+	browser.open("https://duckduckgo.com/")
+	browser.select_form('#search_form_homepage')
+	browser["q"] = query_string 
+	browser.submit_selected()
+	link = browser.get_current_page().select('a.result__a')[0].attrs['href']
 	print(link)
+	return link
+
+if __name__ == '__main__':
+	fingGeniusSongFactUrl("sorry not sorry demi lovato")
+	
 
 #print(table.find('a', recursive=False))

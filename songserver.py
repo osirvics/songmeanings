@@ -15,7 +15,7 @@ def welcome():
 
 @app.route('/hitcount')
 def getCount():
-  return 'This server has recieved {0} hits' .format(redis.get('hits'))
+  return 'This server has recieved {0} hits' .format(countdb.get('hits'))
 
 @app.route('/api/query', methods = ['GET', 'POST'])
 def findSongMeaning():

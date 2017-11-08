@@ -1,5 +1,7 @@
-requests==2.14.2
-MechanicalSoup==0.8.0
 Flask==0.12.2
+requests==2.18.4
+MechanicalSoup==0.8.0
+redis==2.4.13
 beautifulsoup4==4.6.0
+
 gunicorn==19.7.0

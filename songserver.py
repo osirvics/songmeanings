@@ -5,7 +5,7 @@ import redis
 import os
 
 app = Flask(__name__) 
-countdb = redis.from_url(os.environ['REDISCLOUD_URL'])
+#countdb = redis.from_url(os.environ['REDISCLOUD_URL'])
 #redis = Redis() 
 #redis = Redis(host= "redis", port=6379)  
  
@@ -32,9 +32,9 @@ def findSongMeaning():
         }
 
     data = json.dumps(raw)
-    countdb.incr('hits')
+    #countdb.incr('hits')
     return data
 
 if __name__ == '__main__':
-    app.debug = False
-    app.run(host='0.0.0.0')	
+    app.debug = True
+    app.run(host='0.0.0.0', port =5000)	
